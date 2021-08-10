@@ -9,6 +9,7 @@ db = client['HH_Parser']
 hH_vacancy=db.HH_Parser
 
 url = 'https://hh.ru'
+urlYa = 'https:https://yandex.ru/'
 
 params = {'fromSearchLine':'true',
           'st':'searchVacancy',
@@ -67,5 +68,5 @@ for block in block_list:
                  "link": block_link,
                  "salary_min": salary_min,
                  "salary_max": salary_max})
-for doc in hH_vacancy.find({}):
+for doc in hH_vacancy.find({"salary_min":{'$gt':100000}}):
     pprint(doc)
